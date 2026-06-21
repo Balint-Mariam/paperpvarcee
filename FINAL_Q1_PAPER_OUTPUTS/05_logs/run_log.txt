@@ -1,0 +1,5 @@
+2026-06-21 20:34:42 | RUN_FROM_SCRATCH is FALSE; using cached validated outputs.
+2026-06-21 20:34:42 | Reading validated data and model outputs.
+2026-06-21 20:34:57 | Writing master Excel workbook.
+2026-06-21 20:35:03 | Generating paper-ready figures.
+2026-06-21 20:35:11 | Generating exhaustive figures.

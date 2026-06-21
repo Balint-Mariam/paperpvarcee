@@ -1,0 +1,29 @@
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+__pycache__/
+*.tmp
+*.bak
+~$*
+
+# Local regenerated intermediate folders. These are intentionally not part of
+# the clean replication package; the final consolidated outputs are tracked.
+outputs/
+pvarx_outputs_delta_deficit/
+eurostat_macro_q3_q4_outputs/
+extended_panel_q4_2025_outputs/
+refinitiv_3m_rates_outputs*/
+refinitiv_cds_5y_outputs/
+structural_pvar_outputs/
+structural_pvar_ciss_outputs/
+structural_pvar_ciss_fe_lsdv_outputs/
+structural_pvar_ciss_3mrate_outputs/
+structural_pvar_ciss_full7_outputs/
+structural_pvar_ciss_full7_final_outputs/
+structural_pvar_ciss_full7_structural_baseline_outputs/
+structural_pvar_ciss_full7_structural_refined4_outputs/
+structural_pvar_ciss_full7_structural_repaired4_outputs/
+structural_pvar_ciss_full7_historical_decomposition_outputs/
+structural_pvar_ciss_full7_counterfactual_outputs/
+
