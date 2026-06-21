@@ -1,0 +1,8 @@
+# Polished Figure Captions
+
+**F01. Energy-carbon pressure factor.** Figure 1. Energy-carbon pressure factor. Panel A reports the PCA-based energy-carbon pressure factor used in the Structural PVAR. Panel B reports PC1 loadings for the four underlying energy-carbon price components.
+**F02. Selected structural impulse responses.** Figure 2. Selected structural impulse responses. The figure reports median responses and 68%/95% rotation-uncertainty bands for the main transmission channels in the Structural PVAR refined4 S1.
+**F03. Structural forecast-error variance decomposition at horizon 12.** Figure 3. Structural forecast-error variance decomposition at horizon 12. Bars report the share of forecast-error variance attributable to identified shocks and the residual unidentified component for the main macro-financial variables.
+**F04. Historical decomposition of key macro-financial variables.** Figure 4. Historical decomposition of key macro-financial variables. The figure reports panel-average contributions from identified structural shocks, the unidentified component and the initial/deterministic component. The shaded area denotes 2021Q1-2023Q4.
+**F05. Counterfactual sovereign-risk repricing under selected shock-removal scenarios.** Figure 5. Counterfactual sovereign-risk repricing under selected shock-removal scenarios. The figure reports panel-average fitted and counterfactual dlog_CDS paths for the three main model-implied scenarios. The shaded area denotes 2021Q1-2023Q4.
+**F06. Cross-country heterogeneity in counterfactual CDS effects.** Figure 6. Cross-country heterogeneity in counterfactual CDS effects. Bars report cumulative percent effects during 2021Q1-2023Q4, computed as exp(cumulative gap)-1.

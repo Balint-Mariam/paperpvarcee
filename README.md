@@ -5,11 +5,13 @@ Clean replication package for the final CEE Structural PVAR paper workflow.
 ## Contents
 
 - `incercare v2.xlsx` - final Excel input used by the full 7-variable workflow.
+- `00_install_packages.R` - helper script for installing required CRAN packages.
 - `00_master_pipeline_full_paper.R` - unified master script for final consolidation.
 - `15_structural_pvar_full7_final_workflow.R` - final data preparation, FE/LSDV PVAR, GMM robustness, LP robustness.
 - `17_structural_pvar_full7_refined4.R` - final Structural PVAR refined4 S1 sign-restriction stage.
 - `19_structural_pvar_full7_hd_refined4.R` - historical decomposition using the final representative draw.
 - `20_structural_pvar_full7_counterfactual_refined4.R` - counterfactual analysis using the validated HD.
+- `21_polish_q1_figures_tables.R` - final Q1 paper-ready figure/table polishing from existing outputs only.
 - `FINAL_Q1_PAPER_OUTPUTS/` - final paper-ready outputs only.
 
 The final structural model is:
@@ -27,16 +29,42 @@ Key files are in `FINAL_Q1_PAPER_OUTPUTS/`:
 - `02_master_excel/table_manifest.xlsx`
 - `03_figures/figure_manifest.xlsx`
 - `03_figures/main_paper/`
+- `03_figures/main_paper_polished/`
 - `03_figures/appendix/`
+- `03_figures/appendix_polished/`
 - `03_figures/exhaustive_all_combinations/`
+- `03_figures/figure_manifest_polished.xlsx`
 - `04_reports/`
 - `05_logs/reproducibility_checks.txt`
+
+Polished manuscript tables are in:
+
+- `02_master_excel/MASTER_polished_tables_for_manuscript.xlsx`
+- `02_master_excel/table_manifest_polished.xlsx`
+
+Polished captions and the visual polishing report are in:
+
+- `04_reports/paper_figure_captions_polished.md`
+- `04_reports/paper_table_captions_polished.md`
+- `04_reports/final_visual_polishing_report.md`
 
 ## Reproducing
 
 To inspect the final committed outputs, open `FINAL_Q1_PAPER_OUTPUTS`.
 
-To rebuild the full workflow from the Excel input, run from the repository root:
+Install the required R packages first:
+
+```bash
+Rscript 00_install_packages.R
+```
+
+In a clean clone, the master script detects that validated intermediate caches are absent and rebuilds the full workflow from the Excel input:
+
+```bash
+Rscript 00_master_pipeline_full_paper.R
+```
+
+You can also force a full rebuild explicitly:
 
 ```r
 Sys.setenv(RUN_FROM_SCRATCH = "true")
@@ -50,7 +78,21 @@ or from a shell:
 RUN_FROM_SCRATCH=true USE_CACHED_INTERMEDIATE_OUTPUTS=false Rscript 00_master_pipeline_full_paper.R
 ```
 
+On Windows PowerShell:
+
+```powershell
+$env:RUN_FROM_SCRATCH = "true"
+$env:USE_CACHED_INTERMEDIATE_OUTPUTS = "false"
+Rscript .\00_master_pipeline_full_paper.R
+```
+
 The full rebuild can take substantially longer than the final consolidation because the structural stage uses 50,000 candidate rotations.
+
+To regenerate only the polished figures and manuscript tables from existing final outputs, without rerunning any model:
+
+```bash
+Rscript 21_polish_q1_figures_tables.R
+```
 
 ## Reproducibility Snapshot
 
@@ -65,4 +107,3 @@ The final committed run reports:
 - acceptance rate: 25.43%
 - representative draw: candidate draw 23085 / accepted draw 5782
 - HD reconstruction error: 4.441e-16
-

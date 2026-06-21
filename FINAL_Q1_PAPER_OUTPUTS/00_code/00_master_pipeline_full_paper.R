@@ -2,7 +2,8 @@
 # Final structural model: refined4 S1, four-shock sign-only h = 0,1,2.
 # This script consolidates the validated outputs into one final paper folder.
 # Set RUN_FROM_SCRATCH=TRUE in the environment to rerun the major stage scripts
-# before consolidation. The default uses cached validated outputs.
+# before consolidation. In a clean clone, missing validated caches are detected
+# automatically and the script rebuilds from the Excel input.
 
 rm(list = ls())
 
@@ -259,6 +260,33 @@ save_ggplot_publication <- function(plot, filename_base, width = 9, height = 5.5
 }
 
 run_stage_scripts_if_needed <- function() {
+  required_cache_files <- c(
+    FINAL_INPUT_WORKBOOK,
+    REDUCED_FORM_WORKBOOK,
+    FINAL_TABLES_WORKBOOK,
+    STRUCTURAL_RESTRICTIONS_WB,
+    STRUCTURAL_ACCEPTANCE_WB,
+    STRUCTURAL_IRF_WB,
+    STRUCTURAL_FEVD_WB,
+    HD_SETUP_WB,
+    HD_PANEL_WB,
+    HD_COUNTRY_WB,
+    HD_CUMULATIVE_WB,
+    HD_TABLES_WB,
+    CF_SETUP_WB,
+    CF_PANEL_WB,
+    CF_COUNTRY_WB,
+    CF_CUMULATIVE_WB,
+    CF_PERIOD_WB,
+    CF_TABLES_WB
+  )
+  missing_cache <- required_cache_files[!file.exists(required_cache_files)]
+  if (!RUN_FROM_SCRATCH && length(missing_cache) > 0) {
+    log_msg("Validated intermediate cache is incomplete in this checkout; rebuilding from input Excel.")
+    log_msg("Missing cache files:", paste(basename(missing_cache), collapse = ", "))
+    RUN_FROM_SCRATCH <<- TRUE
+    USE_CACHED_INTERMEDIATE_OUTPUTS <<- FALSE
+  }
   if (!RUN_FROM_SCRATCH) {
     log_msg("RUN_FROM_SCRATCH is FALSE; using cached validated outputs.")
     return(invisible(NULL))
