@@ -14,6 +14,9 @@ Clean replication package for the final CEE Structural PVAR paper workflow.
 - `21_polish_q1_figures_tables.R` - final Q1 paper-ready figure/table polishing from existing outputs only.
 - `22_pre_model_diagnostics_cleanup.R` - pre-model diagnostics cleanup from the final model-ready dataset only.
 - `23_fe_lsdv_pvar_dk_inference.R` - alternative Driscoll-Kraay inference for baseline FE/LSDV PVAR coefficients.
+- `24_methodological_code_audit.R` - final methodological code audit and consistency verification from existing outputs only.
+- `25_pipeline_handoff_docs.R` - final handoff documentation and output manifests from existing outputs only.
+- `00_master_pipeline_full_paper_handoff.R` - optional all-stage handoff orchestrator with explicit run flags.
 - `FINAL_Q1_PAPER_OUTPUTS/` - final paper-ready outputs only.
 
 The final structural model is:
@@ -41,6 +44,8 @@ Key files are in `FINAL_Q1_PAPER_OUTPUTS/`:
 - `04_reports/`
 - `05_logs/reproducibility_checks.txt`
 - `06_alternative_inference_DK/`
+- `07_methodological_code_audit/`
+- `08_pipeline_handoff/`
 
 Polished manuscript tables are in:
 
@@ -53,6 +58,30 @@ Polished captions and the visual polishing report are in:
 - `04_reports/paper_table_captions_polished.md`
 - `04_reports/final_visual_polishing_report.md`
 - `04_reports/pre_model_diagnostics_cleanup_report.md`
+- `07_methodological_code_audit/methodological_code_audit_report.md`
+- `08_pipeline_handoff/PROJECT_HANDOFF_GUIDE.md`
+- `08_pipeline_handoff/HOW_TO_REPRODUCE.md`
+- `08_pipeline_handoff/output_manifest_final.xlsx`
+- `08_pipeline_handoff/script_execution_manifest.xlsx`
+
+## Final Empirical Pipeline
+
+The final empirical baseline is a seven-variable FE/LSDV Panel VAR(1), estimated on the balanced 11-country CEE panel for 2014Q2-2025Q4. The variable order is:
+
+`Energy_Factor`, `d_CISS`, `d_CPI`, `GDP_Growth`, `d_3MRate`, `d_FiscalBalanceGDP`, `dlog_CDS`
+
+The reduced-form FE/LSDV estimates are the baseline. Driscoll-Kraay standard errors are provided as coefficient-level inference robustness for the same FE/LSDV equations. GMM and panel local projections are retained as robustness evidence, not as replacements for the baseline.
+
+The structural layer uses the final refined4 S1 four-shock sign-only specification at horizons 0, 1 and 2. Historical decompositions and counterfactuals are built from the selected stable structural draw. Main counterfactual reporting uses only `CF1_no_energy`, `CF4_no_sovereign` and `CF6_no_energy_no_sovereign`.
+
+For manuscript writing, use only:
+
+- `FINAL_Q1_PAPER_OUTPUTS/03_figures/main_paper_polished/`
+- `FINAL_Q1_PAPER_OUTPUTS/03_figures/appendix_polished/`
+- `FINAL_Q1_PAPER_OUTPUTS/02_master_excel/MASTER_polished_tables_for_manuscript.xlsx`
+- `FINAL_Q1_PAPER_OUTPUTS/02_master_excel/MASTER_appendix_tables.xlsx`
+
+The older `03_figures/main_paper/` and `03_figures/exhaustive_all_combinations/` folders are retained for traceability and replication, but they are not the paper-ready selection.
 
 ## Reproducing
 
@@ -110,6 +139,20 @@ To regenerate only the alternative Driscoll-Kraay coefficient-level inference fo
 
 ```bash
 Rscript 23_fe_lsdv_pvar_dk_inference.R
+```
+
+To regenerate only the methodological audit and handoff documentation, without rerunning any model:
+
+```bash
+Rscript 24_methodological_code_audit.R
+Rscript 25_pipeline_handoff_docs.R
+```
+
+For external handoff, see:
+
+```bash
+FINAL_Q1_PAPER_OUTPUTS/08_pipeline_handoff/PROJECT_HANDOFF_GUIDE.md
+FINAL_Q1_PAPER_OUTPUTS/08_pipeline_handoff/HOW_TO_REPRODUCE.md
 ```
 
 ## Reproducibility Snapshot

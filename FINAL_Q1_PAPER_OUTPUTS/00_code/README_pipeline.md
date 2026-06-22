@@ -28,3 +28,15 @@ Optional post-consolidation scripts:
 - `21_polish_q1_figures_tables.R` regenerates polished figures and manuscript tables from existing final outputs only.
 - `22_pre_model_diagnostics_cleanup.R` regenerates the cleaned pre-model diagnostics from the final model-ready dataset only.
 - `23_fe_lsdv_pvar_dk_inference.R` regenerates alternative Driscoll-Kraay coefficient-level inference for the baseline FE/LSDV PVAR only.
+- `24_methodological_code_audit.R` regenerates the methodological code audit from existing final outputs only.
+- `25_pipeline_handoff_docs.R` regenerates the external handoff guide, output manifest, script manifest and methodology map from existing final outputs only.
+
+Optional external handoff wrapper:
+
+- `00_master_pipeline_full_paper_handoff.R` runs the final stage scripts in sequence through explicit flags. Inspect the flags before running because the full structural rebuild can take a long time.
+
+Manuscript selection rule:
+
+- Use `03_figures/main_paper_polished`, `03_figures/appendix_polished`, `MASTER_polished_tables_for_manuscript.xlsx` and `MASTER_appendix_tables.xlsx`.
+- Treat `03_figures/main_paper` and `03_figures/exhaustive_all_combinations` as replication traceability outputs, not final manuscript figures.
+- Main counterfactual scenarios are `CF1_no_energy`, `CF4_no_sovereign` and `CF6_no_energy_no_sovereign`.

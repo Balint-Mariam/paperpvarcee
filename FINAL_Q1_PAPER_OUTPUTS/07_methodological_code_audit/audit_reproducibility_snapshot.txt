@@ -1,0 +1,25 @@
+Audit reproducibility snapshot
+Commit hash: e552f352d54546279436be00b38d872880d80628
+Run time: 2026-06-22 10:34:59 EEST
+R version: R version 4.4.2 (2024-10-31 ucrt)
+Package versions:
+- readxl: 1.4.5
+- openxlsx: 4.2.8
+- dplyr: 1.1.4
+- tidyr: 1.3.1
+- tibble: 3.2.1
+Input files used:
+- C:/Users/user/Desktop/model/paperpvarcee_repo/FINAL_Q1_PAPER_OUTPUTS/01_data/model_ready_dataset.xlsx
+- C:/Users/user/Desktop/model/paperpvarcee_repo/FINAL_Q1_PAPER_OUTPUTS/01_data/transformation_summary.xlsx
+- C:/Users/user/Desktop/model/paperpvarcee_repo/FINAL_Q1_PAPER_OUTPUTS/02_master_excel/MASTER_all_tables_for_paper.xlsx
+- C:/Users/user/Desktop/model/paperpvarcee_repo/FINAL_Q1_PAPER_OUTPUTS/02_master_excel/MASTER_appendix_tables.xlsx
+- C:/Users/user/Desktop/model/paperpvarcee_repo/FINAL_Q1_PAPER_OUTPUTS/02_master_excel/pre_model_diagnostics_cleaned.xlsx
+- C:/Users/user/Desktop/model/paperpvarcee_repo/FINAL_Q1_PAPER_OUTPUTS/06_alternative_inference_DK/FE_LSDV_PVAR_DK_inference.xlsx
+- C:/Users/user/Desktop/model/paperpvarcee_repo/FINAL_Q1_PAPER_OUTPUTS/03_figures/figure_manifest_polished.xlsx
+- C:/Users/user/Desktop/model/paperpvarcee_repo/FINAL_Q1_PAPER_OUTPUTS/02_master_excel/table_manifest_polished.xlsx
+Output files checked: final Excel workbooks, polished manifests, final reports, source scripts.
+Number of checks: 85
+PASS count: 82
+WARNING count: 3
+FAIL count: 0
+Final audit verdict: PASS WITH MINOR WARNINGS - pipeline is coherent, but minor documentation fixes are needed.
