@@ -1,170 +1,187 @@
-# paperpvarcee
+# Energy-Carbon Pressures, Financial Stress and Sovereign-Risk Repricing in Central and Eastern Europe
 
-Clean replication package for the final CEE Structural PVAR paper workflow.
+This repository is the clean external-facing replication package for the final CEE Structural Panel VAR paper workflow.
 
-## Contents
+The package contains the final input workbook, reproducible R code, manuscript-ready outputs, robustness evidence, validation material and archived internal audit files. It excludes exploratory API-fetching scripts and earlier trial specifications from the main workflow.
 
-- `incercare v2.xlsx` - final Excel input used by the full 7-variable workflow.
-- `00_install_packages.R` - helper script for installing required CRAN packages.
-- `00_master_pipeline_full_paper.R` - unified master script for final consolidation.
-- `15_structural_pvar_full7_final_workflow.R` - final data preparation, FE/LSDV PVAR, GMM robustness, LP robustness.
-- `17_structural_pvar_full7_refined4.R` - final Structural PVAR refined4 S1 sign-restriction stage.
-- `19_structural_pvar_full7_hd_refined4.R` - historical decomposition using the final representative draw.
-- `20_structural_pvar_full7_counterfactual_refined4.R` - counterfactual analysis using the validated HD.
-- `21_polish_q1_figures_tables.R` - final Q1 paper-ready figure/table polishing from existing outputs only.
-- `22_pre_model_diagnostics_cleanup.R` - pre-model diagnostics cleanup from the final model-ready dataset only.
-- `23_fe_lsdv_pvar_dk_inference.R` - alternative Driscoll-Kraay inference for baseline FE/LSDV PVAR coefficients.
-- `24_methodological_code_audit.R` - final methodological code audit and consistency verification from existing outputs only.
-- `25_pipeline_handoff_docs.R` - final handoff documentation and output manifests from existing outputs only.
-- `00_master_pipeline_full_paper_handoff.R` - optional all-stage handoff orchestrator with explicit run flags.
-- `FINAL_Q1_PAPER_OUTPUTS/` - final paper-ready outputs only.
+## 1. Project Overview
 
-The final structural model is:
+The project studies how energy-carbon pressures, systemic financial stress, inflation and monetary conditions are transmitted to sovereign-risk repricing in Central and Eastern Europe.
 
-`Structural PVAR refined4 S1 - four-shock sign-only, h=0,1,2`
+The final empirical design combines:
 
-No repaired4, baseline trial, API-fetching, or exploratory intermediate folders are included.
+- a seven-variable FE/LSDV Panel VAR(1) baseline;
+- Driscoll-Kraay coefficient-level inference for the same FE/LSDV equations;
+- robustness checks using PVAR-GMM(1), panel local projections with Driscoll-Kraay inference and pre-model diagnostics;
+- a sign-restricted Structural PVAR layer;
+- historical decomposition and counterfactual analysis.
 
-## Final Outputs
+## 2. Research Question
 
-Key files are in `FINAL_Q1_PAPER_OUTPUTS/`:
+The paper asks whether energy-carbon shocks and financial stress amplify sovereign-risk repricing in CEE, and how much of the 2021Q1-2023Q4 sovereign-risk movement can be attributed to energy and sovereign-risk shocks.
 
-- `02_master_excel/MASTER_all_tables_for_paper.xlsx`
-- `02_master_excel/MASTER_all_tables_for_paper_updated_diagnostics.xlsx`
-- `02_master_excel/pre_model_diagnostics_cleaned.xlsx`
-- `02_master_excel/MASTER_appendix_tables.xlsx`
-- `02_master_excel/table_manifest.xlsx`
-- `03_figures/figure_manifest.xlsx`
-- `03_figures/main_paper/`
-- `03_figures/main_paper_polished/`
-- `03_figures/appendix/`
-- `03_figures/appendix_polished/`
-- `03_figures/exhaustive_all_combinations/`
-- `03_figures/figure_manifest_polished.xlsx`
-- `04_reports/`
-- `05_logs/reproducibility_checks.txt`
-- `06_alternative_inference_DK/`
-- `07_methodological_code_audit/`
-- `08_pipeline_handoff/`
+## 3. Data and Sample
 
-Polished manuscript tables are in:
+Main input:
 
-- `02_master_excel/MASTER_polished_tables_for_manuscript.xlsx`
-- `02_master_excel/table_manifest_polished.xlsx`
+- `data/raw/incercare v2.xlsx`
 
-Polished captions and the visual polishing report are in:
+Final model-ready data:
 
-- `04_reports/paper_figure_captions_polished.md`
-- `04_reports/paper_table_captions_polished.md`
-- `04_reports/final_visual_polishing_report.md`
-- `04_reports/pre_model_diagnostics_cleanup_report.md`
-- `07_methodological_code_audit/methodological_code_audit_report.md`
-- `08_pipeline_handoff/PROJECT_HANDOFF_GUIDE.md`
-- `08_pipeline_handoff/HOW_TO_REPRODUCE.md`
-- `08_pipeline_handoff/output_manifest_final.xlsx`
-- `08_pipeline_handoff/script_execution_manifest.xlsx`
+- `outputs/01_model_ready_data/model_ready_dataset.xlsx`
 
-## Final Empirical Pipeline
+Sample:
 
-The final empirical baseline is a seven-variable FE/LSDV Panel VAR(1), estimated on the balanced 11-country CEE panel for 2014Q2-2025Q4. The variable order is:
+- 11 CEE countries
+- quarterly panel
+- 2014Q2-2025Q4
+- 517 observations
+- balanced panel
 
-`Energy_Factor`, `d_CISS`, `d_CPI`, `GDP_Growth`, `d_3MRate`, `d_FiscalBalanceGDP`, `dlog_CDS`
+## 4. Final Model Architecture
 
-The reduced-form FE/LSDV estimates are the baseline. Driscoll-Kraay standard errors are provided as coefficient-level inference robustness for the same FE/LSDV equations. GMM and panel local projections are retained as robustness evidence, not as replacements for the baseline.
+Final variable order:
 
-The structural layer uses the final refined4 S1 four-shock sign-only specification at horizons 0, 1 and 2. Historical decompositions and counterfactuals are built from the selected stable structural draw. Main counterfactual reporting uses only `CF1_no_energy`, `CF4_no_sovereign` and `CF6_no_energy_no_sovereign`.
+1. `Energy_Factor`
+2. `d_CISS`
+3. `d_CPI`
+4. `GDP_Growth`
+5. `d_3MRate`
+6. `d_FiscalBalanceGDP`
+7. `dlog_CDS`
 
-For manuscript writing, use only:
+Baseline reduced-form model:
 
-- `FINAL_Q1_PAPER_OUTPUTS/03_figures/main_paper_polished/`
-- `FINAL_Q1_PAPER_OUTPUTS/03_figures/appendix_polished/`
-- `FINAL_Q1_PAPER_OUTPUTS/02_master_excel/MASTER_polished_tables_for_manuscript.xlsx`
-- `FINAL_Q1_PAPER_OUTPUTS/02_master_excel/MASTER_appendix_tables.xlsx`
+- FE/LSDV Panel VAR(1)
+- coefficients are FE/LSDV coefficients
+- Driscoll-Kraay inference changes only standard errors, p-values and significance stars
+- the dynamic matrix used for Structural PVAR, FEVD, HD and counterfactuals remains the FE/LSDV dynamic matrix
 
-The older `03_figures/main_paper/` and `03_figures/exhaustive_all_combinations/` folders are retained for traceability and replication, but they are not the paper-ready selection.
+Final structural model:
 
-## Reproducing
-
-To inspect the final committed outputs, open `FINAL_Q1_PAPER_OUTPUTS`.
-
-Install the required R packages first:
-
-```bash
-Rscript 00_install_packages.R
-```
-
-In a clean clone, the master script detects that validated intermediate caches are absent and rebuilds the full workflow from the Excel input:
-
-```bash
-Rscript 00_master_pipeline_full_paper.R
-```
-
-You can also force a full rebuild explicitly:
-
-```r
-Sys.setenv(RUN_FROM_SCRATCH = "true")
-Sys.setenv(USE_CACHED_INTERMEDIATE_OUTPUTS = "false")
-source("00_master_pipeline_full_paper.R")
-```
-
-or from a shell:
-
-```bash
-RUN_FROM_SCRATCH=true USE_CACHED_INTERMEDIATE_OUTPUTS=false Rscript 00_master_pipeline_full_paper.R
-```
-
-On Windows PowerShell:
-
-```powershell
-$env:RUN_FROM_SCRATCH = "true"
-$env:USE_CACHED_INTERMEDIATE_OUTPUTS = "false"
-Rscript .\00_master_pipeline_full_paper.R
-```
-
-The full rebuild can take substantially longer than the final consolidation because the structural stage uses 50,000 candidate rotations.
-
-To regenerate only the polished figures and manuscript tables from existing final outputs, without rerunning any model:
-
-```bash
-Rscript 21_polish_q1_figures_tables.R
-```
-
-To regenerate only the cleaned pre-model diagnostics from the final model-ready dataset, without rerunning any model:
-
-```bash
-Rscript 22_pre_model_diagnostics_cleanup.R
-```
-
-To regenerate only the alternative Driscoll-Kraay coefficient-level inference for the baseline FE/LSDV PVAR:
-
-```bash
-Rscript 23_fe_lsdv_pvar_dk_inference.R
-```
-
-To regenerate only the methodological audit and handoff documentation, without rerunning any model:
-
-```bash
-Rscript 24_methodological_code_audit.R
-Rscript 25_pipeline_handoff_docs.R
-```
-
-For external handoff, see:
-
-```bash
-FINAL_Q1_PAPER_OUTPUTS/08_pipeline_handoff/PROJECT_HANDOFF_GUIDE.md
-FINAL_Q1_PAPER_OUTPUTS/08_pipeline_handoff/HOW_TO_REPRODUCE.md
-```
-
-## Reproducibility Snapshot
-
-The final committed run reports:
-
-- countries: 11
-- quarters: 47
-- final sample: 2014Q2-2025Q4
-- HD/CF effective sample: 2014Q3-2025Q4
-- variable order: `Energy_Factor`, `d_CISS`, `d_CPI`, `GDP_Growth`, `d_3MRate`, `d_FiscalBalanceGDP`, `dlog_CDS`
-- accepted rotations: 12,715
-- acceptance rate: 25.43%
+- `Structural PVAR refined4 S1 - four-shock sign-only, h=0,1,2`
+- shocks: energy-carbon pressure, systemic financial stress, inflationary monetary reaction, sovereign-risk repricing
 - representative draw: candidate draw 23085 / accepted draw 5782
-- HD reconstruction error: 4.441e-16
+
+## 5. Repository Structure
+
+```text
+paperpvarcee/
+  README.md
+  LICENSE
+  .gitignore
+  .gitattributes
+  data/
+    raw/
+    processed/
+  code/
+    00_install_packages.R
+    00_master_pipeline_full_paper_handoff.R
+    02_pre_model_diagnostics/
+    04_robustness/
+    05_structural_pvar/
+    06_historical_decomposition/
+    07_counterfactuals/
+    08_tables_figures/
+    09_validation/
+  outputs/
+    01_model_ready_data/
+    02_tables/
+    03_figures/
+    04_reports/
+    05_logs/
+    06_replication_only/
+  docs/
+  archive/
+```
+
+## 6. How to Reproduce the Analysis
+
+Install required packages:
+
+```bash
+Rscript code/00_install_packages.R
+```
+
+Recommended entry point:
+
+```bash
+Rscript code/00_master_pipeline_full_paper_handoff.R
+```
+
+Inspect the flags at the top of the master script before running. A full structural rebuild can take substantially longer because the structural sign-restriction stage uses 50,000 candidate rotations.
+
+Detailed instructions are in:
+
+- `docs/REPLICATION_GUIDE.md`
+
+## 7. Main Outputs
+
+Main paper tables:
+
+- `outputs/02_tables/main_paper/`
+
+Main paper figures:
+
+- `outputs/03_figures/main_paper/`
+
+Reports:
+
+- `outputs/04_reports/empirical_results_summary.md`
+- `outputs/04_reports/final_model_verdict.md`
+- `outputs/04_reports/pre_model_diagnostics_cleanup_report.md`
+- `outputs/02_tables/robustness/dk_inference/DK_inference_report.md`
+
+## 8. Robustness and Validation
+
+Robustness material:
+
+- `outputs/02_tables/robustness/`
+- `outputs/02_tables/appendix/MASTER_appendix_tables.xlsx`
+
+Validation summary:
+
+- `docs/VALIDATION_SUMMARY.md`
+
+Full internal audit:
+
+- `archive/internal_audit/methodological_code_audit/`
+
+Audit result:
+
+- 82 PASS
+- 3 minor warnings
+- 0 FAIL
+
+## 9. Manuscript-Ready Tables and Figures
+
+Use in the manuscript:
+
+- polished main figures in `outputs/03_figures/main_paper/`
+- polished appendix figures in `outputs/03_figures/appendix/`
+- polished manuscript tables in `outputs/02_tables/main_paper/MASTER_polished_tables_for_manuscript.xlsx`
+- appendix and robustness tables in `outputs/02_tables/appendix/` and `outputs/02_tables/robustness/`
+
+Do not use as main manuscript outputs:
+
+- old unpolished figures;
+- exhaustive all-combinations figures;
+- repaired4 or earlier trial variants;
+- CF2, CF3, CF5 or CF7 as main counterfactual scenarios;
+- raw internal audit workbooks.
+
+The full selection guide is:
+
+- `docs/MANUSCRIPT_OUTPUT_SELECTION.md`
+
+## 10. Notes for Coauthors and Supervisors
+
+Start with:
+
+1. `docs/OUTPUT_ROADMAP.md`
+2. `outputs/04_reports/empirical_results_summary.md`
+3. `outputs/04_reports/final_model_verdict.md`
+4. `docs/METHODOLOGY_OVERVIEW.md`
+5. `docs/MANUSCRIPT_OUTPUT_SELECTION.md`
+
+The repository is organized so external readers can inspect final results first and move to replication, robustness and audit material only if needed.

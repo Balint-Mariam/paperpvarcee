@@ -1,0 +1,25 @@
+Audit reproducibility snapshot
+Commit hash: efeece375112b350de1536c8cab9041217062044
+Run time: 2026-06-22 11:12:59 EEST
+R version: R version 4.4.2 (2024-10-31 ucrt)
+Package versions:
+- readxl: 1.4.5
+- openxlsx: 4.2.8
+- dplyr: 1.1.4
+- tidyr: 1.3.1
+- tibble: 3.2.1
+Input files used:
+- outputs/01_model_ready_data/model_ready_dataset.xlsx
+- outputs/01_model_ready_data/transformation_summary.xlsx
+- outputs/02_tables/main_paper/MASTER_all_tables_for_paper.xlsx
+- outputs/02_tables/appendix/MASTER_appendix_tables.xlsx
+- outputs/02_tables/robustness/pre_model_diagnostics_cleaned.xlsx
+- outputs/02_tables/robustness/dk_inference/FE_LSDV_PVAR_DK_inference.xlsx
+- outputs/03_figures/figure_manifest_polished.xlsx
+- outputs/02_tables/manifests/table_manifest_polished.xlsx
+Output files checked: final Excel workbooks, polished manifests, final reports, source scripts.
+Number of checks: 85
+PASS count: 82
+WARNING count: 3
+FAIL count: 0
+Final audit verdict: PASS WITH MINOR WARNINGS - pipeline is coherent, but minor documentation fixes are needed.

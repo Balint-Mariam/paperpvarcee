@@ -2,6 +2,8 @@
 .RData
 .Ruserdata
 .Rproj.user/
+.DS_Store
+Thumbs.db
 __pycache__/
 *.tmp
 *.bak
@@ -9,7 +11,8 @@ __pycache__/
 
 # Local regenerated intermediate folders. These are intentionally not part of
 # the clean replication package; the final consolidated outputs are tracked.
-outputs/
+FINAL_Q1_PAPER_OUTPUTS/
+archive/old_outputs/local_untracked_intermediate_outputs/
 pvarx_outputs_delta_deficit/
 eurostat_macro_q3_q4_outputs/
 extended_panel_q4_2025_outputs/
@@ -26,4 +29,3 @@ structural_pvar_ciss_full7_structural_refined4_outputs/
 structural_pvar_ciss_full7_structural_repaired4_outputs/
 structural_pvar_ciss_full7_historical_decomposition_outputs/
 structural_pvar_ciss_full7_counterfactual_outputs/
-
