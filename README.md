@@ -13,6 +13,7 @@ Clean replication package for the final CEE Structural PVAR paper workflow.
 - `20_structural_pvar_full7_counterfactual_refined4.R` - counterfactual analysis using the validated HD.
 - `21_polish_q1_figures_tables.R` - final Q1 paper-ready figure/table polishing from existing outputs only.
 - `22_pre_model_diagnostics_cleanup.R` - pre-model diagnostics cleanup from the final model-ready dataset only.
+- `23_fe_lsdv_pvar_dk_inference.R` - alternative Driscoll-Kraay inference for baseline FE/LSDV PVAR coefficients.
 - `FINAL_Q1_PAPER_OUTPUTS/` - final paper-ready outputs only.
 
 The final structural model is:
@@ -39,6 +40,7 @@ Key files are in `FINAL_Q1_PAPER_OUTPUTS/`:
 - `03_figures/figure_manifest_polished.xlsx`
 - `04_reports/`
 - `05_logs/reproducibility_checks.txt`
+- `06_alternative_inference_DK/`
 
 Polished manuscript tables are in:
 
@@ -102,6 +104,12 @@ To regenerate only the cleaned pre-model diagnostics from the final model-ready 
 
 ```bash
 Rscript 22_pre_model_diagnostics_cleanup.R
+```
+
+To regenerate only the alternative Driscoll-Kraay coefficient-level inference for the baseline FE/LSDV PVAR:
+
+```bash
+Rscript 23_fe_lsdv_pvar_dk_inference.R
 ```
 
 ## Reproducibility Snapshot

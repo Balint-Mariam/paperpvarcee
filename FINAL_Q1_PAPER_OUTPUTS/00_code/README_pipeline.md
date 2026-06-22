@@ -27,3 +27,4 @@ Optional post-consolidation scripts:
 
 - `21_polish_q1_figures_tables.R` regenerates polished figures and manuscript tables from existing final outputs only.
 - `22_pre_model_diagnostics_cleanup.R` regenerates the cleaned pre-model diagnostics from the final model-ready dataset only.
+- `23_fe_lsdv_pvar_dk_inference.R` regenerates alternative Driscoll-Kraay coefficient-level inference for the baseline FE/LSDV PVAR only.
