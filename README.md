@@ -12,6 +12,7 @@ Clean replication package for the final CEE Structural PVAR paper workflow.
 - `19_structural_pvar_full7_hd_refined4.R` - historical decomposition using the final representative draw.
 - `20_structural_pvar_full7_counterfactual_refined4.R` - counterfactual analysis using the validated HD.
 - `21_polish_q1_figures_tables.R` - final Q1 paper-ready figure/table polishing from existing outputs only.
+- `22_pre_model_diagnostics_cleanup.R` - pre-model diagnostics cleanup from the final model-ready dataset only.
 - `FINAL_Q1_PAPER_OUTPUTS/` - final paper-ready outputs only.
 
 The final structural model is:
@@ -25,6 +26,8 @@ No repaired4, baseline trial, API-fetching, or exploratory intermediate folders 
 Key files are in `FINAL_Q1_PAPER_OUTPUTS/`:
 
 - `02_master_excel/MASTER_all_tables_for_paper.xlsx`
+- `02_master_excel/MASTER_all_tables_for_paper_updated_diagnostics.xlsx`
+- `02_master_excel/pre_model_diagnostics_cleaned.xlsx`
 - `02_master_excel/MASTER_appendix_tables.xlsx`
 - `02_master_excel/table_manifest.xlsx`
 - `03_figures/figure_manifest.xlsx`
@@ -47,6 +50,7 @@ Polished captions and the visual polishing report are in:
 - `04_reports/paper_figure_captions_polished.md`
 - `04_reports/paper_table_captions_polished.md`
 - `04_reports/final_visual_polishing_report.md`
+- `04_reports/pre_model_diagnostics_cleanup_report.md`
 
 ## Reproducing
 
@@ -92,6 +96,12 @@ To regenerate only the polished figures and manuscript tables from existing fina
 
 ```bash
 Rscript 21_polish_q1_figures_tables.R
+```
+
+To regenerate only the cleaned pre-model diagnostics from the final model-ready dataset, without rerunning any model:
+
+```bash
+Rscript 22_pre_model_diagnostics_cleanup.R
 ```
 
 ## Reproducibility Snapshot

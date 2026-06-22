@@ -22,3 +22,8 @@ Sys.setenv(USE_CACHED_INTERMEDIATE_OUTPUTS = 'false')
 The full rerun can take substantially longer because the structural sign-restriction stage uses 50,000 candidate rotations.
 
 Main stages: data construction, reduced-form FE/LSDV PVAR(1), robustness, structural refined4 S1, historical decomposition, counterfactual analysis, final consolidation.
+
+Optional post-consolidation scripts:
+
+- `21_polish_q1_figures_tables.R` regenerates polished figures and manuscript tables from existing final outputs only.
+- `22_pre_model_diagnostics_cleanup.R` regenerates the cleaned pre-model diagnostics from the final model-ready dataset only.
