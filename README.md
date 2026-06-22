@@ -1,4 +1,4 @@
-# Energy-Carbon Pressures, Financial Stress and Sovereign-Risk Repricing in Central and Eastern Europe
+# CEE Panel VAR Replication Package
 
 This repository is the clean external-facing replication package for the final CEE Structural Panel VAR paper workflow.
 
@@ -16,11 +16,8 @@ The final empirical design combines:
 - a sign-restricted Structural PVAR layer;
 - historical decomposition and counterfactual analysis.
 
-## 2. Research Question
 
-The paper asks whether energy-carbon shocks and financial stress amplify sovereign-risk repricing in CEE, and how much of the 2021Q1-2023Q4 sovereign-risk movement can be attributed to energy and sovereign-risk shocks.
-
-## 3. Data and Sample
+## 2. Data and Sample
 
 Main input:
 
@@ -38,7 +35,7 @@ Sample:
 - 517 observations
 - balanced panel
 
-## 4. Final Model Architecture
+## 3. Final Model Architecture
 
 Final variable order:
 
@@ -63,7 +60,7 @@ Final structural model:
 - shocks: energy-carbon pressure, systemic financial stress, inflationary monetary reaction, sovereign-risk repricing
 - representative draw: candidate draw 23085 / accepted draw 5782
 
-## 5. Repository Structure
+## 4. Repository Structure
 
 ```text
 paperpvarcee/
@@ -95,27 +92,8 @@ paperpvarcee/
   archive/
 ```
 
-## 6. How to Reproduce the Analysis
 
-Install required packages:
-
-```bash
-Rscript code/00_install_packages.R
-```
-
-Recommended entry point:
-
-```bash
-Rscript code/00_master_pipeline_full_paper_handoff.R
-```
-
-Inspect the flags at the top of the master script before running. A full structural rebuild can take substantially longer because the structural sign-restriction stage uses 50,000 candidate rotations.
-
-Detailed instructions are in:
-
-- `docs/REPLICATION_GUIDE.md`
-
-## 7. Main Outputs
+## 5. Main Outputs
 
 Main paper tables:
 
@@ -132,28 +110,8 @@ Reports:
 - `outputs/04_reports/pre_model_diagnostics_cleanup_report.md`
 - `outputs/02_tables/robustness/dk_inference/DK_inference_report.md`
 
-## 8. Robustness and Validation
 
-Robustness material:
-
-- `outputs/02_tables/robustness/`
-- `outputs/02_tables/appendix/MASTER_appendix_tables.xlsx`
-
-Validation summary:
-
-- `docs/VALIDATION_SUMMARY.md`
-
-Full internal audit:
-
-- `archive/internal_audit/methodological_code_audit/`
-
-Audit result:
-
-- 82 PASS
-- 3 minor warnings
-- 0 FAIL
-
-## 9. Manuscript-Ready Tables and Figures
+## 6. Manuscript-Ready Tables and Figures
 
 Use in the manuscript:
 
@@ -174,14 +132,4 @@ The full selection guide is:
 
 - `docs/MANUSCRIPT_OUTPUT_SELECTION.md`
 
-## 10. Notes for Coauthors and Supervisors
 
-Start with:
-
-1. `docs/OUTPUT_ROADMAP.md`
-2. `outputs/04_reports/empirical_results_summary.md`
-3. `outputs/04_reports/final_model_verdict.md`
-4. `docs/METHODOLOGY_OVERVIEW.md`
-5. `docs/MANUSCRIPT_OUTPUT_SELECTION.md`
-
-The repository is organized so external readers can inspect final results first and move to replication, robustness and audit material only if needed.
