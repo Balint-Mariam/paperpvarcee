@@ -1,0 +1,11 @@
+PVARX common-factor robustness run
+Started: 2026-06-23 13:55:14
+Completed: 2026-06-23 13:55:20
+Elapsed seconds: 6.53
+Baseline rows: 506
+Extended rows: 506
+Baseline stable: TRUE
+Extended stable: TRUE
+Workbook: outputs/02_tables/robustness/pvarx_common_factors/PVARX_common_factors_results.xlsx
+Report: outputs/04_reports/PVARX_common_factors_report.md
+Status: completed
